@@ -10,14 +10,16 @@ class Canvas extends Component {
         this.logIndex = this.logIndex.bind(this);
     }
     state = {
-        canvasWidth: 12
+        canvasWidth: 12,
+        currentColour: "#000000",
+        canvasStoredValues: [[],[]]
     }
 
     createCanvas () {
         let canvasToReturn = [];
         for (let y = 0; y < this.state.canvasWidth; y++) {
             for (let i = 0; i < this.state.canvasWidth; i++) {
-                canvasToReturn.push(<Pixel index={y + " " + i} logIndex={this.logIndex}/>);
+                canvasToReturn.push(<Pixel key={i + " " + y} index={y + " " + i} newColour = {this.state.currentColour} logIndex={this.logIndex}/>);
             }
         }
         return canvasToReturn;

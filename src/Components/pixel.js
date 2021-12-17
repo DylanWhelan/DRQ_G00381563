@@ -12,11 +12,12 @@ class Pixel extends Component {
 
     returnKey(event) {
         this.props.logIndex(this.props.index);
+        this.setState({colour: this.props.newColour});
     }
 
     render() {
         return (
-            <div key={this.props.index} className="pixel" onClick={this.returnKey} style={{backgroundColor: this.state.colour}}/>
+            <div className="pixel" onClick={this.returnKey} style={{backgroundColor: this.state.colour}}/>
         )
     }
 }
