@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3001
+const port = 4000
 const path = require('path');
 const bodyparser = require("body-parser");
 const cors = require('cors');
@@ -37,6 +37,7 @@ var imageModel = mongoose.model("image", imageSchema);
 
 app.get('/api/images', (req, res) => {
     imageModel.find((err, data) => {
+        console.log(data);
         res.json(data);
     })
 })

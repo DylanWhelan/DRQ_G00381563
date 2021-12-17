@@ -1,7 +1,5 @@
 import { Component } from "react";
 
-import "../styles.css";
-
 class Pixel extends Component {
     constructor(props){
         super(props);
@@ -17,7 +15,7 @@ class Pixel extends Component {
 
     render() {
         return (
-            <div className="pixel" onClick={this.returnKey} style={{backgroundColor: this.state.colour}}/>
+            <div onClick={this.returnKey} style={{backgroundColor: this.state.colour, border: "2px solid black", placeContent: "center"}}/>
         )
     }
 }

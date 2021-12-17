@@ -1,5 +1,4 @@
 import { Component } from "react";
-import "../styles.css";
 import axios from "axios";
 import Pixel from "./pixel";
 
@@ -81,7 +80,7 @@ class Canvas extends Component {
             artArray: arrayToPass
         }
 
-        axios.post('http://localhost:3001/api/images', newImage)
+        axios.post('http://localhost:4000/api/images', newImage)
         .then((res)=>{
             console.log(res);
         })

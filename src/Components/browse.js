@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Images } from "./images";
+import axios from "axios";
 
 
 class Browse extends Component {
@@ -12,12 +13,23 @@ class Browse extends Component {
         }
     }
 
+    componentDidMount() {
+        axios.get('http://localhost:4000/api/images')
+            .then((response) => {
+                this.setState({ images: response.data });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
 
     render() {
         return (
             <div>
-                <h1>This is another lovely place holder ain't it?</h1>
-                <Images images={this.state.images}></Images>
+                <div style={{ display: "grid", gridTemplateColumns: `repeat(3, 1fr)`, aspectRatio: "1 / 1", width: "80vmin", marginLeft: "auto", marginRight: "auto" }}>
+                    <Images images={this.state.images}></Images>
+                </div>
             </div>
         )
     }
