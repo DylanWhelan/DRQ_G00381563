@@ -27,7 +27,7 @@ class Browse extends Component {
     render() {
         return (
             <div>
-                <div style={{ display: "grid", gridTemplateColumns: `repeat(3, 1fr)`, aspectRatio: "1 / 1", width: "80vmin", marginLeft: "auto", marginRight: "auto" }}>
+                <div style={{ display: "grid", gridTemplateColumns: `repeat(3, 1fr)`, aspectRatio: "1 / 1", width: "80vw", marginLeft: "auto", marginRight: "auto" }}>
                     <Images images={this.state.images}></Images>
                 </div>
             </div>

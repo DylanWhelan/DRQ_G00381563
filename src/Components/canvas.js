@@ -10,6 +10,7 @@ class Canvas extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeArtTitle = this.onChangeArtTitle.bind(this);
         this.onChangeAuthor = this.onChangeAuthor.bind(this);
+        this.onChangeCurrentColour = this.onChangeCurrentColour.bind(this);
         this.changeColour = this.changeColour.bind(this);
     }
     state = {
@@ -45,6 +46,12 @@ class Canvas extends Component {
 
         newArray[x][y] = this.state.currentColour;
         this.setState({ canvasStoredValues: newArray });
+    }
+
+    onChangeCurrentColour(e) {
+        this.setState({
+            currentColour: e.target.value
+        })
     }
 
     onChangeArtTitle(e) {
@@ -108,6 +115,7 @@ class Canvas extends Component {
                 <div className="canvas" style={{ display: "grid", gridTemplate: `repeat(${this.state.canvasWidth}, 1fr) / repeat(${this.state.canvasWidth}, 1fr)`, aspectRatio: "1 / 1", width: "80vmin", marginLeft: "auto", marginRight: "auto" }}>
                     {this.createCanvas()}
                 </div>
+                <input value={this.state.currentColour} onChange={this.onChangeCurrentColour}/>
             </div>
         )
     }

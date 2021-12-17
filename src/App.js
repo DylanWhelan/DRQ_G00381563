@@ -9,11 +9,13 @@ import Browse from './Components/browse';
 
 import {
   BrowserRouter as Router,
-  Routes,
-  Route
+  Route,
+  Switch
 } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Homepage from './Components/homepage';
+import Modify from './Components/modify';
 
 class App extends Component {
   render() {
@@ -24,15 +26,18 @@ class App extends Component {
             <Container>
               <NavbarBrand href="/">Navbar</NavbarBrand>
               <Nav className="me-auto">
-                <Nav.Link href="/">Canvas</Nav.Link>
+                <Nav.Link href="/">Homepage</Nav.Link>
+                <Nav.Link href="/canvas">Canvas</Nav.Link>
                 <Nav.Link href="/browse">Browse Art</Nav.Link>
               </Nav>
             </Container>
           </Navbar>
-          <Routes>
-            <Route path="/" element={<Canvas />}></Route>
-            <Route path="/browse" element={<Browse />}></Route>
-          </Routes>
+          <Switch>
+            <Route path="/" component={Homepage} exact/>
+            <Route path="/canvas" component={Canvas}/>
+            <Route path="/browse" component={Browse}/>
+            <Route path="/modify/:id" component={Modify}/>
+          </Switch>
         </div>
       </Router>
     );

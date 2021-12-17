@@ -35,19 +35,27 @@ var imageSchema = new Schema({
 
 var imageModel = mongoose.model("image", imageSchema);
 
+
 app.get('/api/images', (req, res) => {
     imageModel.find((err, data) => {
-        console.log(data);
         res.json(data);
     })
 })
 
-app.post('/api/images', (req, res) => {
-    console.log(req.body.artTitle);
-    console.log(req.body.author);
-    console.log(req.body.canvasSize);
-    console.log(req.body.artArray);
+app.get('/api/images/:id', (req, res)=>{
+    imageModel.findById(req.params.id, (err, data) => {
+        res.json(data);
+    })
+})
 
+app.put('/api/images/:id', (req, res)=>{
+    imageModel.findByIdAndUpdate(req.params.id, req.body, {new: true},
+        (err, data) =>{
+            res.send(data);
+        })
+})
+
+app.post('/api/images', (req, res) => {
     imageModel.create({
         artTitle: req.body.artTitle,
         author: req.body.author,
@@ -56,6 +64,12 @@ app.post('/api/images', (req, res) => {
     })
 
     res.send('Art Successfully Uploaded!')
+})
+
+app.delete('/api/movies/:id', (req, res)=>{
+    imageModel.findByIdAndDelete(req.params.id, (err, data)=>{
+        res.send(data);
+    })
 })
 
 app.listen(port, () => {
