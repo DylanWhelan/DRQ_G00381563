@@ -32,7 +32,7 @@ class Canvas extends Component {
     render() {
         return (
             <div className="canvas">
-                <div className="canvas">
+                <div className="canvas" style={{display: "grid", gridTemplate: `repeat(${this.state.canvasWidth}, 1fr) / repeat(${this.state.canvasWidth}, 1fr)`}}>
                     {this.createCanvas()}
                 </div>
             </div>

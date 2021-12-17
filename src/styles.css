@@ -1,13 +1,12 @@
 .canvas {
-    --board-width: 12;
-    display: grid;
+    /*--board-width: 12;
+    display: grid;*/
     width: 700px;
     height: 700px;
-    grid-template: repeat(var(--board-width), 1fr) / repeat(var(--board-width), 1fr);
+    /*grid-template: repeat(var(--board-width), 1fr) / repeat(var(--board-width), 1fr);*/
 }
 
 .pixel {
     border: 2px solid black;
-    display: grid;
     place-items: center;
 }
