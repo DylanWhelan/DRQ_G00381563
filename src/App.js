@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div className="App" style={{marginLeft: "auto", marginRight: "auto"}}>
           <Navbar bg="primary" variant="dark">
             <Container>
               <NavbarBrand href="/">Navbar</NavbarBrand>

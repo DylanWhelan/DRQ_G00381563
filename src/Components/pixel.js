@@ -6,12 +6,12 @@ class Pixel extends Component {
     constructor(props){
         super(props);
 
-        this.state = {colour: "#FFFFFF"};
+        this.state = {colour: this.props.colour};
         this.returnKey = this.returnKey.bind(this);
     }
 
     returnKey(event) {
-        this.props.logIndex(this.props.index);
+        this.props.changeColour(this.props.index);
         this.setState({colour: this.props.newColour});
     }
 
