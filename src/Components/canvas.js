@@ -1,5 +1,6 @@
 import { Component } from "react";
 import "../styles.css";
+import axios from "axios";
 import Pixel from "./pixel";
 
 
@@ -62,6 +63,31 @@ class Canvas extends Component {
     onSubmit(e) {
         e.preventDefault();
         alert("Art: " + this.state.artTitle+"\nAuthor: " + this.state.author);
+
+        // Mongodb does not support 2d arrays, so the canvasStoredValues array
+        // Shall be converted to a 1d array called arrayToPass
+        let arrayToPass = [];
+
+        for (let x = 0; x < this.state.canvasWidth; x++) {
+            for (let y = 0; y < this.state.canvasWidth; y++) {
+                arrayToPass.push(this.state.canvasStoredValues[x][y]);
+            }
+        }
+
+        const newImage = {
+            artTitle: this.state.artTitle,
+            author: this.state.author,
+            canvasSize: this.state.canvasWidth,
+            artArray: arrayToPass
+        }
+
+        axios.post('http://localhost:3001/api/images', newImage)
+        .then((res)=>{
+            console.log(res);
+        })
+        .catch((err)=>{
+            console.log(err);
+        });
     }
 
     render() {
